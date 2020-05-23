@@ -32,7 +32,22 @@ class MapView extends Component{
     state = {
         lat: 40.0423477,
         lng: -100.4082212,
-        zoom: 4
+        zoom: 4,
+    }
+
+    timer() {
+        if(this.props.coords){
+            this.setState({
+                lat: this.props.coords.latitude,
+                lng: this.props.coords.longitude,
+                zoom: 6
+            })
+            clearInterval(this.intervalId);
+        }
+    }
+
+    componentDidMount() {
+        this.intervalId = setInterval(this.timer.bind(this), 1000);
     }
 
     render(){
@@ -43,7 +58,7 @@ class MapView extends Component{
             ) : !this.props.isGeolocationEnabled ? (
                 <div>Geolocation is not enabled</div>
             ) : this.props.coords ? (
-                <Marker position={[this.props.coords.latitude, this.props.coords.longitude]} icon={homeIcon}>
+                    <Marker position={[this.props.coords.latitude, this.props.coords.longitude]} icon={homeIcon}>
                         <Popup>
                             Your Location
                         </Popup>
@@ -52,7 +67,7 @@ class MapView extends Component{
         )
         return (
             <div>
-                
+                {this.zoomInUserLocation}
                 <Map className="map" center={position} zoom={this.state.zoom}>
                     <TileLayer
                         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
