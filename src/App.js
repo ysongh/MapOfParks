@@ -1,12 +1,12 @@
 import React from 'react';
 
-import MapUS from './components/Map';
+import Map from './components/Map';
 
 function App() {
   return (
     <div>
       <h1>Map</h1>
-      <MapUS />
+      <Map />
     </div>
   );
 }

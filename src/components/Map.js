@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, Marker, TileLayer } from 'react-leaflet';
+import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
 import L from 'leaflet';
 
 import IconBlue from '../images/icon1.svg';
@@ -34,8 +34,16 @@ class MapUS extends Component{
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[40.0423477, -100.4082212]} icon={blueIcon}></Marker>
-                <Marker position={[30.0423477, -100.4082212]} icon={redIcon}></Marker>
+                <Marker position={[40.0423477, -100.4082212]} icon={blueIcon}>
+                    <Popup>
+                        10/50
+                    </Popup>
+                </Marker>
+                <Marker position={[30.0423477, -100.4082212]} icon={redIcon}>
+                    <Popup>
+                        100/75
+                    </Popup>
+                </Marker>
             </Map>
         )
     }
