@@ -1,13 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Route  } from 'react-router-dom';
 
 import Map from './components/Map';
 
 function App() {
   return (
-    <div>
+    <Router>
       <h1>Map</h1>
-      <Map />
-    </div>
+      <Route exact path="/" component={Map} />
+    </Router>
   );
 }
 
