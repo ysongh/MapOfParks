@@ -6,7 +6,6 @@ import Map from './components/Map';
 function App() {
   return (
     <Router>
-      <h1>Map</h1>
       <Route exact path="/" component={Map} />
     </Router>
   );

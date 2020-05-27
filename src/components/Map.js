@@ -67,7 +67,7 @@ class MapView extends Component{
         )
         return (
             <div>
-                {this.zoomInUserLocation}
+                <h1>Map</h1>
                 <Map className="map" center={position} zoom={this.state.zoom}>
                     <TileLayer
                         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
