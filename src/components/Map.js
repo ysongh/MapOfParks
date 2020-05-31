@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
 import { geolocated } from "react-geolocated";
 
-import { homeIcon, blueIcon, redIcon } from './Icons';
+import MarkerList from './MarkerList';
+import { homeIcon } from './Icons';
 
 class MapView extends Component{
     state = {
@@ -49,16 +50,8 @@ class MapView extends Component{
                         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker position={[40.0423477, -100.4082212]} icon={blueIcon}>
-                        <Popup>
-                            10/50
-                        </Popup>
-                    </Marker>
-                    <Marker position={[30.0423477, -100.4082212]} icon={redIcon}>
-                        <Popup>
-                            100/75
-                        </Popup>
-                    </Marker>
+                    
+                    <MarkerList />
                     {location}
                 </Map>
             </div>
