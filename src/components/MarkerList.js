@@ -3,19 +3,19 @@ import { Marker, Popup } from 'react-leaflet';
 
 import { blueIcon, redIcon } from './Icons';
 
-const MarkerList = () => {
+const MarkerList = ({ coordinatesList }) => {
     return(
         <div>
-             <Marker position={[40.0423477, -100.4082212]} icon={blueIcon}>
-                <Popup>
-                    10/50
-                </Popup>
-            </Marker>
-            <Marker position={[30.0423477, -100.4082212]} icon={redIcon}>
-                <Popup>
-                    100/75
-                </Popup>
-            </Marker>
+            {coordinatesList.map(cl => {
+                return(
+                    <Marker key={cl.Code} position={[cl.Latitude, cl.Longitude]} icon={blueIcon}>
+                        <Popup>
+                            <p>Branch: {cl.Branch}</p>
+                            <p>Name: {cl.Name}</p>
+                        </Popup>
+                    </Marker>
+                );
+            })}
         </div>
     )
 }
