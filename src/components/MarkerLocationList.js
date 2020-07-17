@@ -10,8 +10,7 @@ const MarkerList = ({ coordinatesList }) => {
                 return(
                     <Marker key={cl.Code} position={[cl.Latitude, cl.Longitude]} icon={locationIcon}>
                         <Popup>
-                            <p>Branch: {cl.Branch}</p>
-                            <p>Name: {cl.Name}</p>
+                            <h6>{cl.Name}</h6>
                         </Popup>
                     </Marker>
                 );

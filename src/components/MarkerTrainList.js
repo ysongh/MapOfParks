@@ -8,10 +8,10 @@ const MarkerTrainList = ({ coordinatesList }) => {
         <div>
             {coordinatesList.map(cl => {
                 return(
-                    <Marker key={cl.Code} position={[cl.Latitude, cl.Longitude]} icon={trainIcon}>
+                    <Marker key={cl.TrainName} position={[cl.Latitude, cl.Longitude]} icon={trainIcon}>
                         <Popup>
-                            <p>Minutes Late: {cl.MinutesLate}</p>
-                            <p>Status: {cl.StatusDescription}</p>
+                            <h6>To: {cl.DestinationDescription}</h6>
+                            <p>Status: <span className={cl.StatusDescription === "On Time" ? "badge badge-primary badge-pill" : "badge badge-danger badge-pill"}>{cl.StatusDescription}</span></p>
                         </Popup>
                     </Marker>
                 );
