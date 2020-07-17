@@ -3,8 +3,10 @@ import { Map, TileLayer } from 'react-leaflet';
 import { geolocated } from "react-geolocated";
 import axios from 'axios';
 
-import MarkerList from './MarkerList';
-import { API1 } from '../config';
+import MarkerLocationList from './MarkerLocationList';
+import MarkerTrainList from './MarkerTrainList';
+import { API1 } from '../data/config';
+import { trainData } from '../data/data';
 
 class MapView extends Component{
     state = {
@@ -17,7 +19,6 @@ class MapView extends Component{
     async componentDidMount() {
         try{
             const data = await axios.get(API1);
-            console.log(data)
 
             this.setState({ coordinatesList: data.data });
         } catch(err){
@@ -36,7 +37,8 @@ class MapView extends Component{
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     
-                    <MarkerList coordinatesList={this.state.coordinatesList} />
+                    <MarkerLocationList coordinatesList={this.state.coordinatesList} />
+                    <MarkerTrainList coordinatesList={trainData} />
                 </Map>
             </div>
             

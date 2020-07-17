@@ -1,14 +1,14 @@
 import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
 
-import { blueIcon, redIcon } from './Icons';
+import { locationIcon } from './Icons';
 
 const MarkerList = ({ coordinatesList }) => {
     return(
         <div>
             {coordinatesList.map(cl => {
                 return(
-                    <Marker key={cl.Code} position={[cl.Latitude, cl.Longitude]} icon={blueIcon}>
+                    <Marker key={cl.Code} position={[cl.Latitude, cl.Longitude]} icon={locationIcon}>
                         <Popup>
                             <p>Branch: {cl.Branch}</p>
                             <p>Name: {cl.Name}</p>
