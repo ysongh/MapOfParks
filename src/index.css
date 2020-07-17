@@ -4,18 +4,23 @@ body {
 }
 
 .map{
-    height: 500px;
+    height: 600px;
     position: relative;;
 }
 
 .directionBox{
     position: absolute;
     z-index: 401;
-    width: 300px;
+    min-width: 300px;
     background-color: #f5f3ef;
     padding: 1rem;
     line-height: 1.2;
-    right: 0;
+    right: 0px;
+}
+
+.carStatus{
+    padding: .5rem;
+    margin-right: 1rem;
 }
 
 .p-none{

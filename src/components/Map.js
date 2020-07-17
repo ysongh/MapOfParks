@@ -8,12 +8,18 @@ import MarkerTrainList from './MarkerTrainList';
 import { APIKEY, API1, API2, API3 } from '../data/config';
 import { trainData } from '../data/data';
 
+const statusColor = {
+    "Empty": "green",
+    "Half full": 'yellow',
+    "Full": 'red'
+}
+
 class MapView extends Component{
     state = {
         coordinatesList: [],
-        lat: 41.2423477,
-        lng: -73.9082212,
-        zoom: 8.5,
+        lat: 41.2223477,
+        lng: -73.4282212,
+        zoom: 10,
         direction: "",
         cars: []
     }
@@ -66,7 +72,7 @@ class MapView extends Component{
                     <div className="directionBox">
                         <h6>Train Status:</h6>
                         {this.state.cars.map((car, index) => {
-                            return <p key={index}>{car.PassengerCount} {car.PassengerLevel}</p>
+                            return <span key={index} className="carStatus" style={{ backgroundColor: statusColor[car.PassengerLevel]}}>{car.PassengerCount}</span>
                         })}
                     </div>
                 ) : null}
