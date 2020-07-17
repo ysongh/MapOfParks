@@ -39,7 +39,10 @@ class MapView extends Component{
 
         const data = await axios.get(API2 + id + "/" + APIKEY + "station.json");
 
-        this.setState({ direction: data.data.GetStationDetailJsonResult.Directions1 });
+        this.setState({
+            direction: data.data.GetStationDetailJsonResult.Directions1,
+            cars: []
+        });
     }
 
     async checkTrainStatus(e){
@@ -47,7 +50,10 @@ class MapView extends Component{
             const id = e.sourceTarget.options.value.toString();
             const data = await axios.get(API3 + id + "/" + APIKEY);
 
-            this.setState({ cars: data.data.consist.Cars });
+            this.setState({
+                direction: "",
+                cars: data.data.consist.Cars
+            });
         } catch(err){
             console.error(err);
             this.setState({ cars: [] });
@@ -69,7 +75,7 @@ class MapView extends Component{
                 ) : null}
 
                 {this.state.cars.length ? (
-                    <div className="directionBox">
+                    <div className="statusBox">
                         <h6>Train Status:</h6>
                         {this.state.cars.map((car, index) => {
                             return <span key={index} className="carStatus" style={{ backgroundColor: statusColor[car.PassengerLevel]}}>{car.PassengerCount}</span>
