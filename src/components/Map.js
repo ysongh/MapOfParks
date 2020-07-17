@@ -9,9 +9,9 @@ import { APIKEY, API1, API2, API3 } from '../data/config';
 import { trainData } from '../data/data';
 
 const statusColor = {
-    "Empty": "green",
-    "Half full": 'yellow',
-    "Full": 'red'
+    "Empty": "badge badge-success badge-pill",
+    "Half full": "badge badge-warning badge-pill",
+    "Full": "badge badge-danger badge-pill"
 }
 
 class MapView extends Component{
@@ -77,9 +77,16 @@ class MapView extends Component{
                 {this.state.cars.length ? (
                     <div className="statusBox">
                         <h6>Train Status:</h6>
-                        {this.state.cars.map((car, index) => {
-                            return <span key={index} className="carStatus" style={{ backgroundColor: statusColor[car.PassengerLevel]}}>{car.PassengerCount}</span>
-                        })}
+                        <ul className="list-group">
+                            {this.state.cars.map((car, index) => {
+                                return (
+                                    <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                                        Car#{index + 1}
+                                        <span className={statusColor[car.PassengerLevel]} >{car.PassengerCount}</span>
+                                    </li>
+                                )
+                            })}
+                        </ul>
                     </div>
                 ) : null}
                 
